@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bostrap script-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+    <title>Index input</title>
+    <style>
+        body {}
+
+        .inputerr {
+            display: none;
+        }
+
+        #smsSuccess {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <br>
+        <div class="card">
+            <h5 class="card-header">Input Document for</h5>
+            <div class="card-body">
+                <div class="row g-1">
+                    <div class="col-sm-1">
+                        <label for="">ID</label>
+                        <input type="text" id="idbox" placeholder="Id" class="form-control form-control-sm" value="1"
+                            readonly>
+                        <label for="lberr" class="text-danger inputerr" id="errId"><small>Enter id*</small></label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="">Document Title</label>
+                        <input type="text" id="titlebox" placeholder="Title" class="form-control form-control-sm">
+                        <label for="lberr" class="text-danger inputerr" id="errTitle"><small>Enter document
+                                title*</small></label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="">Exam Type</label>
+                        <select id="selectMainCategory" class="form-control form-control-sm">
+                            <option value="000">Select Exam Type...</option>
+                        </select>
+                        <input hidden type="text" id="p_mainCategoryid" class="form-control form-control-sm">
+                        <label for="lberr" class="text-danger inputerr" id="errmainCategory"><small>Select enter exam
+                                type*</small></label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="">Exam Subject</label>
+                        <select id="selectSubCategory" class="form-control form-control-sm">
+                            <option value="000">Select Exam Subject...</option>
+                        </select>
+                        <label for="lberr" class="text-danger inputerr" id="errsubCategory"><small>Select enter exam
+                                subject*</small></label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="">Auther</label>
+                        <input type="text" id="autherbox" placeholder="Auther" class="form-control form-control-sm">
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label for="">Post Date</label>
+                        <input type="date" id="postdatebox" class="form-control form-control-sm">
+                        <label for="lberr" class="text-danger inputerr" id="errPostdate"><small>Enter post
+                                date*</small></label>
+                    </div>
+                </div>
+                <div class="row g-1">
+                    <div class="col-sm-7">
+                        <label for="">Documents Description</label>
+                        <textarea rows="7" placeholder="Description" class="form-control form-control-sm"
+                            id="descriptionbox"></textarea>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="col-12 form-label">Document Cover</label>
+                                <div class="col-12">
+                                    <img style="width: 80px; height: 110px;" class="img-thumbnail align-middle"
+                                        id="documentImg">
+                                    <label id="UpProgresscover" class="align-bottom"></label>
+                                    <label for="lberr" class="align-bottom text-danger inputerr"
+                                        id="errCover"><small>Enter cover*</small></label>
+                                </div>
+                                <button class="col-12 btn btn-primary btn-sm" id="selectcover">Choose...</button>
+                                <label style="font-size: 12px; color: rgb(39, 39, 39);">Image size (W:330px x H:500px)</label>
+                            </div>
+                            <div class="col-6">
+                                <label class="col-12 form-label">Document PDF File</label>
+                                <div class="col-12">
+                                    <img style="width: 80px; height: 110px;" class="img-thumbnail" id="documentPDF">
+                                    <label for="lberr" class="align-bottom text-danger inputerr"
+                                        id="errPdf"><small>Enter PDF file*</small></label>
+                                    <label id="UpProgresspdf" class="align-bottom"></label>
+                                </div>
+                                <button class="col-12 btn btn-primary btn-sm" id="selectpdf">Choose...</button>
+                                <label style="font-size: 12px; color: rgb(39, 39, 39);">Max file size (8MP)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row g-1 alert alert-success" id="smsSuccess">
+                    <div class="col-11">
+                        Successfully.
+                    </div>
+                    <div class="col-1">
+                        <button id="btnSMSSuccessfull" class="btn btn-outline-danger btn-sm"
+                            style="float: right;">X</button>
+                    </div>
+                </div>
+                <div class="row g-1">
+                    <div id="insert" class="col-md-2"><button class="form-control btn btn-success">Save</button>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <!--configeration-->
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
+
+    <script id="MainScript">
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyCq_nz5eYr6mmzNPW1kIXiOWEbBlGkRf2U",
+            authDomain: "vinheasatreambralong.firebaseapp.com",
+            databaseURL: "https://vinheasatreambralong-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "vinheasatreambralong",
+            storageBucket: "vinheasatreambralong.appspot.com",
+            messagingSenderId: "999100854346",
+            appId: "1:999100854346:web:65a97daf077f5d251fb6b3",
+            measurementId: "G-2PBTPHEJJ2"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        //firebase.analytics();
+        var Id;
+        var Title;
+        var MainCategory_id;
+        var MainCategory_title;
+        var SubCategory_id;
+        var SubCategory_title;
+        var Auther;
+        var PostDate;
+        var Description;
+        var CoverUrl;
+        var PdfUrl;
+        var Coverfiles = [];
+        var PdfFiles = [];
+        var reader;
+        //Hidden Message successfully.
+        document.getElementById('btnSMSSuccessfull').onclick = function () {
+            document.getElementById('smsSuccess').style.display = 'none';
+        }
+
+        //Load data time post date
+        function postDatafunction() {
+            var date = new Date();
+            var currentDate = date.toISOString().substring(0, 10);
+            document.getElementById('postdatebox').value = currentDate;
+        }
+        window.onload = postDatafunction();
+
+        //List data from fierbase to select selectMaincategory
+        function selectDataMaincategory() {
+            firebase.database().ref('maincategory').once('value', function (AllRecord) {
+                AllRecord.forEach(
+                    function (CurrentRecord) {
+                        var id = CurrentRecord.val().maincategoryid;
+                        var title = CurrentRecord.val().maincategorytitle;
+                        AddItemToSelectMaincategory(id, title);
+                    }
+                );
+            });
+        }
+        window.onload = selectDataMaincategory();
+        //Add Item to select iption Maincategory
+        function AddItemToSelectMaincategory(id, title) {
+            //getElement
+            var selectMain = document.getElementById('selectMainCategory');
+            //createElement
+            var opt = document.createElement('option');
+            opt.value = id;
+            opt.text = title;
+            selectMain.appendChild(opt);
+        }
+
+        document.getElementById('selectMainCategory').addEventListener('change', function () {
+            var _mainid = document.getElementById('p_mainCategoryid');
+            //_mainid.innerHTML = this.value;
+            _mainid.value = this.value;
+            document.getElementById("selectSubCategory").innerHTML = "<option value='000'>Select Exam Subject...</option>";
+            selectDataSubcategory();
+        });
+
+        //List data from fierbase to select selectSubcategory
+        function selectDataSubcategory() {
+            var mainc_id = document.getElementById("p_mainCategoryid").value;
+            console.log(mainc_id);
+            firebase.database().ref('subcategory').orderByChild('maincategoryid').equalTo(mainc_id).once('value', function (AllRecord) {
+                AllRecord.forEach(
+                    function (CurrentRecord) {
+                        var id = CurrentRecord.val().subcategoryid;
+                        var title = CurrentRecord.val().subcategorytitle;
+                        AddItemToSelectSubcategory(id, title);
+                    }
+                );
+            });
+        }
+        //Add Item to select iption Maincategory
+        function AddItemToSelectSubcategory(id, title) {
+            //getElement
+            var selectSub = document.getElementById('selectSubCategory');
+            //createElement
+            var opt = document.createElement('option');
+            opt.value = id;
+            opt.text = title;
+            selectSub.appendChild(opt);
+        }
+
+
+        //Select Image Cover;
+        document.getElementById("selectcover").onclick = function (e) {
+            var input = document.createElement('input');
+            input.type = 'file';
+            input.onchange = e => {
+                Coverfiles = e.target.files;
+                reader = new FileReader();
+                reader.onload = function () {
+                    document.getElementById("documentImg").src = reader.result;
+                }
+                reader.readAsDataURL(Coverfiles[0]);
+            }
+            input.click();
+        }
+
+        //Select Document PDF;
+        document.getElementById("selectpdf").onclick = function (e) {
+            var input = document.createElement('input');
+            input.type = 'file';
+            input.onchange = e => {
+                PdfFiles = e.target.files;
+                reader = new FileReader();
+                reader.onload = function () {
+                    document.getElementById("documentPDF").src = reader.result;
+                }
+                reader.readAsDataURL(PdfFiles[0]);
+            }
+            input.click();
+        }
+
+
+        //Upload
+        document.getElementById('insert').onclick = function () {
+
+            Id = document.getElementById('idbox').value;
+            Title = document.getElementById('titlebox').value;
+            //main category
+            var main_categorys = document.getElementById('selectMainCategory');
+            MainCategory_id = main_categorys.options[main_categorys.selectedIndex].value;
+            MainCategory_title = main_categorys.options[main_categorys.selectedIndex].text;
+            //sub category
+            var sub_categorys = document.getElementById('selectSubCategory');
+            SubCategory_id = sub_categorys.options[sub_categorys.selectedIndex].value;
+            SubCategory_title = sub_categorys.options[sub_categorys.selectedIndex].text;
+            //nex
+            Auther = document.getElementById('autherbox').value;
+            PostDate = document.getElementById('postdatebox').value;
+            Description = document.getElementById('descriptionbox').value;
+
+            var uploadTaskcover = firebase.storage().ref('cover_image/' + Id + '-' + Title + '-' + PostDate).put(Coverfiles[0]);
+            var uploadTaskpdf = firebase.storage().ref('pdf_file/' + Id + '-' + Title + '-' + PostDate).put(PdfFiles[0]);
+
+            if (Id == "") {
+                document.getElementById('errId').style.display = 'flex';
+            } else if (Title == "") {
+                document.getElementById('errId').style.display = 'none';
+                document.getElementById('errTitle').style.display = 'flex';
+            } else if (MainCategory_id == "000") {
+                document.getElementById('errId').style.display = 'none';
+                document.getElementById('errTitle').style.display = 'none';
+                document.getElementById('errmainCategory').style.display = 'flex';
+            } else if (SubCategory_id == "000") {
+                document.getElementById('errId').style.display = 'none';
+                document.getElementById('errTitle').style.display = 'none';
+                document.getElementById('errmainCategory').style.display = 'none';
+                document.getElementById('errsubCategory').style.display = 'flex';
+            } else if (PostDate == "") {
+                document.getElementById('errId').style.display = 'none';
+                document.getElementById('errTitle').style.display = 'none';
+                document.getElementById('errmainCategory').style.display = 'none';
+                document.getElementById('errsubCategory').style.display = 'none';
+                document.getElementById('errPostdate').style.display = 'flex';
+            } else if (Coverfiles == "") {
+                document.getElementById('errId').style.display = 'none';
+                document.getElementById('errTitle').style.display = 'none';
+                document.getElementById('errmainCategory').style.display = 'none';
+                document.getElementById('errsubCategory').style.display = 'none';
+                document.getElementById('errPostdate').style.display = 'none';
+                document.getElementById('errCover').style.display = 'flex';
+            } else if (PdfFiles == "") {
+                document.getElementById('errId').style.display = 'none';
+                document.getElementById('errTitle').style.display = 'none';
+                document.getElementById('errmainCategory').style.display = 'none';
+                document.getElementById('errsubCategory').style.display = 'none';
+                document.getElementById('errPostdate').style.display = 'none';
+                document.getElementById('errCover').style.display = 'none';
+                document.getElementById('errPdf').style.display = 'flex';
+                return;
+            } else {
+                document.getElementById('errPdf').style.display = 'none';
+                uploadTaskcover.on('state_changed', function (snapshot) {
+                    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    document.getElementById('UpProgresscover').innerHTML = 'Upload' + progress + '%';
+                },
+                    uploadTaskpdf.on('state_changed', function (snapshot) {
+                        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        document.getElementById('UpProgresspdf').innerHTML = 'Upload' + progress + '%';
+                    },
+                        function (error) {
+                            alert("Error");
+                        },
+                        function () {
+                            uploadTaskcover.snapshot.ref.getDownloadURL().then(function (url) {
+                                CoverUrl = url;
+                                uploadTaskpdf.snapshot.ref.getDownloadURL().then(function (url) {
+                                    PdfUrl = url;
+                                    firebase.database().ref('document/' + Id).set({
+                                        documentid: Id,
+                                        title: Title,
+                                        maincategoryid: MainCategory_id,
+                                        maincategorytitle: MainCategory_title,
+                                        subcategoryid: SubCategory_id,
+                                        subcategorytitle: SubCategory_title,
+                                        auther: Auther,
+                                        postdate: PostDate,
+                                        description: Description,
+                                        coverurl: CoverUrl,
+                                        pdfurl: PdfUrl
+                                    });
+                                    document.getElementById('smsSuccess').style.display = 'flex';
+                                    getDocumentid();
+                                })
+                            })
+                        }));
+            }
+
+
+        }
+
+        function getDocumentid() {
+            firebase.database().ref('document').limitToLast(1).once('value')
+                .then(function (snapshot) {
+                    snapshot.forEach(function (childSnapshot) {
+                        var lastrecord = childSnapshot.val().documentid;
+                        var autoid = ++lastrecord;
+                        document.getElementById('idbox').value = autoid;
+                    });
+                });
+        }
+
+        window.onload = getDocumentid();
+    </script>
+
+</body>
+
+</html>
